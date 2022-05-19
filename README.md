@@ -1,4 +1,4 @@
-##Car Listing
+## Car Listing
 
 It provides a platform that receives listings through different channels, standardize and make them available in the platform.
 
@@ -45,7 +45,7 @@ Search paramenters available:
  color
 ```
 
-###Requirements:
+### Requirements:
 ? Listings can have same "code" for different dealers
 
 ? A listing is updated if it is sent again by the same dealer (based on the code)
