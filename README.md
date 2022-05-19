@@ -46,10 +46,10 @@ Search paramenters available:
 ```
 
 ### Requirements:
-? Listings can have same "code" for different dealers
+- Listings can have same "code" for different dealers
 
-? A listing is updated if it is sent again by the same dealer (based on the code)
+- A listing is updated if it is sent again by the same dealer (based on the code)
 
-? Integration tests
+- Integration tests
 
-? Usage of OCI-Containers - Docker
+- Usage of OCI-Containers - Docker
