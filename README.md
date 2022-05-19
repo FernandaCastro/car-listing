@@ -2,7 +2,8 @@
 
 It provides a platform that receives listings through different channels, standardize and make them available in the platform.
 
-Some providers send listing data via CSV to the endpoint: 
+Some providers send listing data via CSV to the endpoint:
+A sample file (upload.csv) is available under  /resourses
 ```
 POST /upload_csv/{dealer_id}
 
