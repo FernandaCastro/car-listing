@@ -3,11 +3,11 @@
 It provides a platform that receives listings through different channels, standardize and make them available in the platform.
 
 Some providers send listing data via CSV to the endpoint:
-A sample file (upload.csv) is available under  /resourses
+
 ```
 POST /upload_csv/{dealer_id}
 
-CSV Format:
+CSV Format - A sample file (upload.csv) is available under /resourses:
 
 code,make/model,power-in-ps,year,color,price
 1,mercedes/a 180,123,2014,black,15950
