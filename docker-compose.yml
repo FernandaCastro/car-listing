@@ -1,0 +1,34 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: db
+      POSTGRES_DB: car_listing
+    volumes:
+        - postgres_data:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - postgres
+
+  adminer-integration-test:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8090:8080
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres_data:
+
+## Run from the Terminal
+#docker compose up -d
