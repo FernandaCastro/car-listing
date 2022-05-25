@@ -1,4 +1,5 @@
 package com.fcastro.carlisting;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,9 +17,11 @@ public class Listing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @JsonIgnore
     private Long id;
 
     @Column(name = "dealer_id", nullable = false)
+    @JsonIgnore
     private Long dealerId;
 
     @Column(name = "code", nullable = false)

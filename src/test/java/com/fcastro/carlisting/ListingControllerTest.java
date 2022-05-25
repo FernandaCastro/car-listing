@@ -40,13 +40,13 @@ public class ListingControllerTest {
         MockMultipartFile file
                 = new MockMultipartFile(
                 "file",
-                "upload.csv",
+                "tools/upload-error.csv",
                 MediaType.TEXT_PLAIN_VALUE,
                 "content".getBytes()
         );
 
         //when //then
-        mockMvc.perform(MockMvcRequestBuilders.multipart("/upload_csv/1")
+        mockMvc.perform(MockMvcRequestBuilders.multipart("/car-listing/upload/1")
                         .file(file))
 
                 .andExpect(status().isOk())

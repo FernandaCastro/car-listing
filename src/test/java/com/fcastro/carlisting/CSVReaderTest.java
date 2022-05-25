@@ -12,8 +12,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,7 +33,7 @@ public class CSVReaderTest {
         MockMultipartFile file
                 = new MockMultipartFile(
                 "file",
-                "upload.csv",
+                "tools/upload-error.csv",
                 MediaType.TEXT_PLAIN_VALUE,
                 content.getBytes(StandardCharsets.ISO_8859_1)
         );
@@ -63,7 +61,7 @@ public class CSVReaderTest {
         MockMultipartFile file
                 = new MockMultipartFile(
                 "file",
-                "upload.csv",
+                "tools/upload-error.csv",
                 MediaType.TEXT_PLAIN_VALUE,
                 content.getBytes(StandardCharsets.ISO_8859_1)
         );

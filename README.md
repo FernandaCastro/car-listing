@@ -5,7 +5,7 @@ It provides a platform that receives listings through different channels, standa
 Some providers send listing data via CSV to the endpoint:
 
 ```
-POST /upload_csv/{dealer_id}
+POST /car-listing/upload/{dealer_id}
 
 CSV Format - A sample file (upload.csv) is available under /resourses:
 
@@ -18,7 +18,7 @@ code,make/model,power-in-ps,year,color,price
 
 Some providers send listing data via JSON API to the endpoint:
 ````
-POST /car-listings
+POST /car-listing/listings/{dealer_id}
 
 JSON Format:
 
@@ -37,7 +37,7 @@ JSON Format:
 
 A search is available under the endpoint:
 ```
-GET /car-listings
+GET /car-listing/listings
 
 Search paramenters available:
  make

@@ -15,12 +15,13 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 @RestController
+@RequestMapping("car-listing")
 @AllArgsConstructor
 public class ListingController {
 
     private final ListingService service;
 
-    @PostMapping(value = "/upload_csv/{dealerId}",
+    @PostMapping(value = "/upload/{dealerId}",
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<Listing>> upload_csv(@PathVariable Long dealerId, @RequestParam MultipartFile file){
@@ -35,12 +36,12 @@ public class ListingController {
         }
     }
 
-    @PostMapping("/car-listings")
-    public ResponseEntity<Listing> create(@RequestBody Listing listing){
-        return ResponseEntity.ok(service.save(listing));
+    @PostMapping("/listings/{dealerId}")
+    public ResponseEntity<List<Listing>> create(@PathVariable Long dealerId, @RequestBody List<Listing> listings){
+        return ResponseEntity.ok(service.saveAll(dealerId, listings));
     }
 
-    @GetMapping("/car-listings")
+    @GetMapping("/listings")
     public ResponseEntity<List<Listing>> search(@RequestParam(required = false) MultiValueMap<String, String> allParams){
 
         List<Listing> listings;
