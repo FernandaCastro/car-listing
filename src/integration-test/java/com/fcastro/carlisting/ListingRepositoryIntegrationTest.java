@@ -1,5 +1,6 @@
 package com.fcastro.carlisting;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -14,8 +15,6 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
@@ -49,9 +48,9 @@ public class ListingRepositoryIntegrationTest {
         List<Listing> result = listingRepository.findAllByAllParams(params);
 
         //then
-        assertThat(result).isNotNull();
-        assertThat(result).hasSize(2);
-        assertThat(result.get(0).getColor()).isIn("green", "white");
-        assertThat(result.get(1).getColor()).isIn("green", "white");
+        Assertions.assertThat(result).isNotNull();
+        Assertions.assertThat(result).hasSize(2);
+        Assertions.assertThat(result.get(0).getColor()).isIn("green", "white");
+        Assertions.assertThat(result.get(1).getColor()).isIn("green", "white");
     }
 }

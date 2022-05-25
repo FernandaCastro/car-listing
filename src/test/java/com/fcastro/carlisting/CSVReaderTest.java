@@ -77,24 +77,4 @@ public class CSVReaderTest {
         //then
         assertThat(thrown.getMessage()).contains("Error parsing CSV line: 5");
     }
-
-    @Test
-    public void RegexTest(){
-        String input = "mercedes/a 180";
-        Pattern makePattern = Pattern.compile("(.*)/.*"); //"([^/]*)
-        Pattern modelPattern =  Pattern.compile(".*/(.*)");  //(?<=/).*(?=)
-
-        Matcher makeMatcher =  makePattern.matcher(input);
-        Matcher modelMatcher = modelPattern.matcher(input);
-
-        System.out.println(input);
-        if (makeMatcher.matches()){
-            System.out.println("Make0: " + makeMatcher.group(0));
-            System.out.println("Make1: " + makeMatcher.group(1));
-        }
-        if (modelMatcher.matches()){
-            System.out.println("Model0: "+ modelMatcher.group(0));
-            System.out.println("Model1: "+ modelMatcher.group(1));
-        }
-    }
 }
