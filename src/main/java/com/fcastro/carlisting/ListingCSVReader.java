@@ -2,14 +2,13 @@ package com.fcastro.carlisting;
 
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Component
@@ -22,8 +21,12 @@ public class ListingCSVReader {
                 .withSeparator(',')
                 .build();
 
-        List<ListingCSV> listingCSVs = csvToBean.parse();
-        return mapToListing(listingCSVs);
+        try {
+            List<ListingCSV> listingCSVs = csvToBean.parse();
+            return mapToListing(listingCSVs);
+        }catch(RuntimeException e){
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, e.getCause().getMessage() + " - " + e.getMessage());
+        }
     }
 
     private List<Listing> mapToListing(List<ListingCSV> listingCSVs) {

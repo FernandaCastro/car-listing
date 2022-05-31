@@ -1,6 +1,9 @@
-## Car Listing
+# Car Listing
 
-It provides a platform that receives listings through different channels, standardize and make them available in the platform.
+It provides a platform that receives listings through different channels. Listings are then standardized and made available in the platform.
+
+## How to send listing data:
+1 - Via CSV file:
 
 Some providers send listing data via CSV to the endpoint:
 
@@ -13,8 +16,11 @@ code,make/model,power-in-ps,year,color,price
 1,mercedes/a 180,123,2014,black,15950
 2,audi/a3,111,2016,white,17210
 3,vw/golf,86,2018,green,14980
-4,skoda/octavia,86,2018,16990
+4,skoda/octavia,86,2018,gray,16990
+
 ````
+
+2 - Via JSON API:
 
 Some providers send listing data via JSON API to the endpoint:
 ````
@@ -34,7 +40,7 @@ JSON Format:
    }
 ]
 ````
-
+## How to search for a listing:
 A search is available under the endpoint:
 ```
 GET /car-listing/listings
@@ -46,11 +52,11 @@ Search paramenters available:
  color
 ```
 
-### Requirements:
+### A few other requirements:
 - Listings can have same "code" for different dealers
 
-- A listing is updated if it is sent again by the same dealer (based on the code)
+- When resending a listing, it is always updated. The match is made by dealer_id and code.
 
-- Integration tests
+- Create Integration tests (I'm using TestContainer)
 
 - Usage of OCI-Containers - Docker

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.Clock;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -21,6 +20,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     static {
         httpClientErrorExceptionMessage.put(HttpStatus.NOT_FOUND, "Resource was not found.");
+        httpClientErrorExceptionMessage.put(HttpStatus.BAD_REQUEST, "Request is invalid. Please review it.");
     }
 
     @ExceptionHandler(value = {HttpClientErrorException.class})
@@ -46,7 +46,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 .timestamp(Clock.systemUTC().millis())
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .errorType(ex.getClass().getSimpleName())
-                .errorMessage("Please, contact with support.")
+                .errorMessage("Please contact the support.")
                 .errorDetail(ex.getMessage())
                 .path(request.getRequestURI().toString())
                 .build();

@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -68,11 +69,12 @@ public class CSVReaderTest {
         BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
 
         //when
-        Exception thrown = Assertions.assertThrows(Exception.class, () -> {
+        HttpClientErrorException thrown = Assertions.assertThrows(HttpClientErrorException.class, () -> {
             listingCsvReader.readFile(reader);
         });
 
+        System.out.println(thrown.getMessage());
         //then
-        assertThat(thrown.getMessage()).contains("Error parsing CSV line: 5");
+        assertThat(thrown.getMessage()).contains("Number of data fields does not match number of headers");
     }
 }
