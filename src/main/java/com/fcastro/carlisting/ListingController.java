@@ -12,10 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
-@RequestMapping("car-listing")
+@RequestMapping("listings")
 @AllArgsConstructor
 public class ListingController {
 
@@ -26,9 +27,9 @@ public class ListingController {
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<Listing>> upload_csv(@PathVariable Long dealerId, @RequestParam MultipartFile file){
 
-        BufferedReader reader = null;
+        BufferedReader reader;
         try {
-            reader = new BufferedReader(new InputStreamReader(file.getInputStream(), "ISO-8859-1"));
+            reader = new BufferedReader(new InputStreamReader(file.getInputStream(), StandardCharsets.ISO_8859_1));
             return ResponseEntity.ok(service.processFile(dealerId, reader));
 
         } catch (IOException e) {
@@ -36,12 +37,12 @@ public class ListingController {
         }
     }
 
-    @PostMapping("/listings/{dealerId}")
+    @PostMapping("/{dealerId}")
     public ResponseEntity<List<Listing>> create(@PathVariable Long dealerId, @RequestBody List<Listing> listings){
         return ResponseEntity.ok(service.saveAll(dealerId, listings));
     }
 
-    @GetMapping("/listings")
+    @GetMapping
     public ResponseEntity<List<Listing>> search(@RequestParam(required = false) MultiValueMap<String, String> allParams){
 
         List<Listing> listings;

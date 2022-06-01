@@ -1,6 +1,6 @@
 services:
   car-listing:
-    image: car-listing:latest
+    image: ${DOCKER_USER}/car-listing:1.0-SNAPSHOT
     container_name: car-listing
     ports:
       - "8080:8080"
@@ -8,7 +8,6 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - postgres
-      - spring
     depends_on:
       - postgres
 

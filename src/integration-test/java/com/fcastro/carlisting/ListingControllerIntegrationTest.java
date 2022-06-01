@@ -15,6 +15,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -51,10 +52,10 @@ public class ListingControllerIntegrationTest {
         listingRepository.saveAll(Arrays.asList(listing1, listing2, listing3));
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.put("year", Arrays.asList("2015"));
+        params.put("year", Collections.singletonList("2015"));
 
         //when //then
-        mockMvc.perform(MockMvcRequestBuilders.get("/car-listings/")
+        mockMvc.perform(MockMvcRequestBuilders.get("/listings")
                         .params(params))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath(("$"), hasSize(2)));

@@ -46,13 +46,12 @@ public class ListingControllerTest {
         );
 
         //when //then
-        mockMvc.perform(MockMvcRequestBuilders.multipart("/car-listing/upload/1")
+        mockMvc.perform(MockMvcRequestBuilders.multipart("/listings/upload/1")
                         .file(file))
 
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].make", is("mercedes")))
-                .andExpect(jsonPath("$[0].model", is("a 180")))
-                .andExpect(jsonPath("$[0].id", is(1)));
+                .andExpect(jsonPath("$[0].model", is("a 180")));
     }
 }
