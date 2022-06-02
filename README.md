@@ -124,7 +124,7 @@ POST /listings/upload/2
 $ curl -v -POST -F "file=@tools/upload.csv" http://localhost:8080/listings/upload/2
 ````
 
-###3- GET listings by search
+### 3- GET listings by search
 
 GET /listings?color=pink
 
