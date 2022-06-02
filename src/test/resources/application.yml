@@ -1,0 +1,12 @@
+spring:
+  output:
+    ansi:
+      enabled: DETECT
+
+logging:
+  level:
+    root: INFO
+    org.springframework: ERROR
+    org.hibernate: ERROR
+    com.github: INFO
+    org.testcontainers: INFO
