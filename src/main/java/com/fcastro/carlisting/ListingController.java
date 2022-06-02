@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -45,7 +46,7 @@ public class ListingController {
     @GetMapping
     public ResponseEntity<List<Listing>> search(@RequestParam(required = false) MultiValueMap<String, String> allParams){
 
-        List<Listing> listings;
+        List<Listing> listings = new ArrayList<Listing>();
 
         if (allParams != null && !allParams.isEmpty()){
             listings = service.findAllByAllParams(allParams);
@@ -54,7 +55,7 @@ public class ListingController {
         }
 
         if (listings == null || listings.isEmpty()){
-            throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
 
         return ResponseEntity.ok(listings);
