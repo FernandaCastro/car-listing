@@ -3,7 +3,7 @@
 It provides a first version for a platform that receives listings through different channels. Listings are then standardized and made available in the platform.
 
 ## Sending listing data
-###1 - Via CSV file:
+### 1 - Via CSV file:
 
 ```
 POST /listings/upload/{dealerId}
@@ -18,7 +18,7 @@ code,make/model,power-in-ps,year,color,price
 
 ````
 
-###2 - Via JSON API:
+### 2 - Via JSON API:
 
 ````
 POST /listings/{dealerId}
@@ -58,14 +58,14 @@ GET /listings
 - Usage of OCI-Containers - Docker
 
 ---------------------
-##Executing Unit Tests and Integration Tests
+## Executing Unit Tests and Integration Tests
 Unit Tests (src/test) and Integration Tests (src/integration-test) are executed by running:
 
 ````mvn clean test -P integration-test````
 
 -------------------------------------------
 
-##Running the application locally
+## Running the application locally
 1. Bring up the Postgres database container: 
    - Navigate to: ```$ cd <project folder>\tools``` 
    - Run : ````$ docker compose up -d```` 
@@ -87,7 +87,7 @@ Unit Tests (src/test) and Integration Tests (src/integration-test) are executed 
 
 ## Let's run some tests
 
-###1- POST listings via JSON API
+### 1- POST listings via JSON API
 
 POST /listings/1
 
@@ -116,7 +116,7 @@ $ curl -v -POST -H "Content-type:application/json" -d \
 http://localhost:8080/listings/1
 ````
 
-###2- POST listings via CSV file
+### 2- POST listings via CSV file
 
 POST /listings/upload/2
 
