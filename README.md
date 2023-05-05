@@ -71,9 +71,10 @@ Unit Tests (src/test) and Integration Tests (src/integration-test) are executed 
    - Run : ````$ docker compose up -d```` 
    
 2. Compile the application: 
+   - Navigate to project folder: ``$ cd ..``
    - `````$ mvn clean instal`````
    
-3. Start the application: 
+4. Start the application: 
    - ````$ java -jar <project folder>\target\car-listing-1.0-SNAPSHOT.jar````
    
 -------------------------
@@ -121,13 +122,18 @@ http://localhost:8080/listings/1
 POST /listings/upload/2
 
 ````
+$ cd <project-folder>
 $ curl -v -POST -F "file=@tools/upload.csv" http://localhost:8080/listings/upload/2
 ````
 
 ### 3- GET listings by search
 
-GET /listings?color=pink
+GET /listings?color=gray
+
+GET /listings?color=gray&color=black
 
 ```
-$ curl -v -GET http://localhost:8080/listings/color=pink
+$ curl -v -GET http://localhost:8080/listings?color=gray
+$ curl -v -GET http://localhost:8080/listings -d 'color=gray&color=black'
 ```
+
