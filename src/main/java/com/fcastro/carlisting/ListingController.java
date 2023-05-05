@@ -43,7 +43,7 @@ public class ListingController {
         return ResponseEntity.ok(service.saveAll(dealerId, listings));
     }
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Listing>> search(@RequestParam(required = false) MultiValueMap<String, String> allParams){
 
         List<Listing> listings = new ArrayList<Listing>();
@@ -52,10 +52,6 @@ public class ListingController {
             listings = service.findAllByAllParams(allParams);
         }else{
             listings = service.findAll();
-        }
-
-        if (listings == null || listings.isEmpty()){
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
 
         return ResponseEntity.ok(listings);
